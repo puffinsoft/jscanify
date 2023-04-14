@@ -90,6 +90,8 @@ navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
   };
 });
 ```
+
+To export the paper to a PDF, see [here](https://stackoverflow.com/questions/23681325/convert-canvas-to-pdf)
 ### Notes
 - for optimal paper detection, the paper should be placed on a flat surface with a solid background color
 - we recommend wrapping your code using `jscanify` in a window `load` event listener to ensure OpenCV is loaded
