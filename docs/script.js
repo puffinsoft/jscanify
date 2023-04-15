@@ -32,11 +32,13 @@ $('#demo-images .image-container').click(function () {
         const newImg = document.createElement("img")
         newImg.src = imageSrc
 
-        scanner.extractPaper(newImg, 386, 500, (resultCanvas) => {
-            $('#demo-result').append(resultCanvas);
-            
-            const highlightedCanvas = scanner.highlightPaper(newImg)
-            $('#demo-result').append(highlightedCanvas);
-        });
+        newImg.onload = function(){
+            scanner.extractPaper(newImg, 386, 500, (resultCanvas) => {
+                $('#demo-result').append(resultCanvas);
+                
+                const highlightedCanvas = scanner.highlightPaper(newImg)
+                $('#demo-result').append(highlightedCanvas);
+            });
+        }
     })
 })
