@@ -1,0 +1,27 @@
+{
+  "name": "jscanify",
+  "version": "1.0.0",
+  "description": "Open-source Javascript mobile document scanner.",
+  "main": "src/jscanify.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ColonelParrot/jscanify.git"
+  },
+  "keywords": [
+    "js",
+    "scanner",
+    "document-scanner"
+  ],
+  "author": "ColonelParrot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ColonelParrot/jscanify/issues"
+  },
+  "homepage": "https://colonelparrot.github.io/jscanify/"
+}
