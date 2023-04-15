@@ -24,8 +24,7 @@ const scanner = new jscanify()
 $('#demo-images .image-container').click(function () {
     $('.image-container.selected').removeClass('selected')
     $(this).addClass('selected')
-    const imageSrc = $(this).find('img')[0].src
-    console.log(imageSrc)
+    const imageSrc = $(this).find('img').data('url')
     loadOpenCV(function () {
         $('#demo-result').empty()
 
