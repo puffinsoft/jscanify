@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-32CWY3SB1G"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-32CWY3SB1G")</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-32CWY3SB1G"></script>
+  <script>function gtag() { dataLayer.push(arguments) } window.dataLayer = window.dataLayer || [], gtag("js", new Date), gtag("config", "G-32CWY3SB1G")</script>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,14 +16,11 @@
   <meta property="og:locale" content="en_US" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="stylesheet" href="index.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/a11y-light.min.css"
-    integrity="sha512-WDk6RzwygsN9KecRHAfm9HTN87LQjqdygDmkHSJxVkVI7ErCZ8ZWxP6T8RvBujY1n2/E4Ac+bn2ChXnp5rnnHA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" async />
 </head>
 
 <body>
   <div id="hero">
-    <img src="images/logo-full-small.png" />
+    <img src="images/logo-full-small.png" alt="jscanify logo" />
     <h2>Open-source pure Javascript implemented mobile document scanner.</h2>
     <br />
     <div class="view-on">
@@ -62,10 +60,10 @@
     <div id="demo">
       <div id="demo-images">
         <div class="image-container">
-          <img src="images/test/test.png" />
+          <img src="images/test/test-sized.png" data-url="images/test/test.png" alt="jscanify test image 1" />
         </div>
         <div class="image-container" style="margin-bottom: 0">
-          <img src="images/test/test2.avif" />
+          <img src="images/test/test2-sized.png" data-url="images/test/test2.png" alt="jscanify test image 2" />
         </div>
       </div>
       <div id="arrow"></div>
@@ -90,7 +88,8 @@ image.onload = function () {
     document.body.appendChild(resultCanvas);
   });
 };</code></pre>
-  It's that easy! Come check out the <a href="https://github.com/ColonelParrot/jscanify/wiki" target="_blank">documentation</a>!
+    It's that easy! Come check out the <a href="https://github.com/ColonelParrot/jscanify/wiki"
+      target="_blank">documentation</a>!
   </div>
   <script src="https://cdn.jsdelivr.net/gh/ColonelParrot/jscanify@latest/src/jscanify.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -99,8 +98,16 @@ image.onload = function () {
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"
     integrity="sha512-bgHRAiTjGrzHzLyKOnpFvaEpGzJet3z4tZnXGjpsCcqOnAH6VGUx9frc5bcIhKTVLEiCO6vEhNAgx5jtLUYrfA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script>hljs.highlightAll();</script>
+    crossorigin="anonymous" referrerpolicy="no-referrer" async></script>
+  <script>
+    $(document).ready(function () {
+      hljs.highlightAll();
+    })
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/a11y-light.min.css"
+    integrity="sha512-WDk6RzwygsN9KecRHAfm9HTN87LQjqdygDmkHSJxVkVI7ErCZ8ZWxP6T8RvBujY1n2/E4Ac+bn2ChXnp5rnnHA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </body>
 
 </html>
