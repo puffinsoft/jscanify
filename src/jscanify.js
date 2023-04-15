@@ -95,6 +95,7 @@
       const img = cv.imread(image);
 
       const maxContour = this.findPaperContour(img);
+      cv.imshow(canvas, img);
       if (maxContour) {
         const {
           topLeftCorner,
@@ -102,8 +103,6 @@
           bottomLeftCorner,
           bottomRightCorner,
         } = this.getCornerPoints(maxContour, img);
-
-        cv.imshow(canvas, img);
 
         if (
           topLeftCorner &&
