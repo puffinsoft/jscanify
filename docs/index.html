@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-32CWY3SB1G"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-32CWY3SB1G")</script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>jscanify - Javascript mobile document scanner</title>
+  <meta name="description" content="Open-source pure Javascript implemented mobile document scanner." />
+  <meta property="og:title" content="jscanify" />
+  <meta property="og:description" content="Open-source pure Javascript implemented mobile document scanner." />
+  <meta property="og:url" content="https://colonelparrot.github.io/jscanify/" />
+  <meta property="og:image" content="https://colonelparrot.github.io/jscanify/images/logo.png" />
+  <meta property="og:locale" content="en_US" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/a11y-light.min.css"
+    integrity="sha512-WDk6RzwygsN9KecRHAfm9HTN87LQjqdygDmkHSJxVkVI7ErCZ8ZWxP6T8RvBujY1n2/E4Ac+bn2ChXnp5rnnHA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" async />
+</head>
+
+<body>
+  <div id="hero">
+    <img src="images/logo-full-small.png" />
+    <h2>Open-source pure Javascript implemented mobile document scanner.</h2>
+    <br />
+    <div class="view-on">
+      <a class="view-on-option" href="https://github.com/ColonelParrot/jscanify" target="_blank" style="margin: 10px">
+        <svg width="16" height="16" aria-hidden="true" viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+        View on Github
+      </a>
+      <a class="view-on-option" href="https://nodei.co/npm/jscanify/" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="16" viewBox="0 0 256 100"
+          preserveAspectRatio="xMinYMin meet">
+          <path d="M0 0v85.498h71.166V99.83H128V85.498h128V0H0z" fill="#CB3837"></path>
+          <path
+            d="M42.502 14.332h-28.17v56.834h28.17V28.664h14.332v42.502h14.332V14.332H42.502zM85.498 14.332v71.166h28.664V71.166h28.17V14.332H85.498zM128 56.834h-13.838v-28.17H128v28.17zM184.834 14.332h-28.17v56.834h28.17V28.664h14.332v42.502h14.332V28.664h14.332v42.502h14.332V14.332h-57.328z"
+            fill="#FFF"></path>
+        </svg>
+        View on npm
+      </a>
+    </div>
+  </div>
+  <div id="content">
+    <b>jscanify</b> is an open-source pure Javascript implemented mobile
+    document scanner designed to run in any Javascript environment
+    <u>for free</u>. <br /><br />
+    <b>jscanify</b> is capable of detecting & highlighting documents in an
+    image, as well as undistorting it. It is fast and easy to learn.<br /><br />
+    It can run in the <b>browser</b> or on a server with <b>NodeJS</b>.
+    <br /><br />
+    <hr />
+    <div id="demo-title">
+      <h1 style="margin-bottom: 0">Demo</h1>
+      <p style="margin-top: 0">Select an image below to scan</p>
+    </div>
+    <div id="demo">
+      <div id="demo-images">
+        <div class="image-container">
+          <img src="images/test/test.png" />
+        </div>
+        <div class="image-container" style="margin-bottom: 0">
+          <img src="images/test/test2.avif" />
+        </div>
+      </div>
+      <div id="arrow"></div>
+      <div id="demo-result">
+        Scan results will appear here
+      </div>
+    </div>
+    <br /><br />
+    <hr />
+    <h1>Installation</h1>
+    <pre><code class="language-js">$ npm i jscanify
+import jscanify from 'jscanify'</code></pre>
+    OR
+    <pre><code class="language-html">&lt;script src=&quot;https://docs.opencv.org/4.7.0/opencv.js&quot; async&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/ColonelParrot/jscanify@master/src/jscanify.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+    <h1>Usage</h1>
+    <pre><code class="language-js">const scanner = new jscanify();
+const paperWidth = 500;
+const paperHeight = 1000;
+image.onload = function () {
+  scanner.extractPaper(image, paperWidth, paperHeight, (resultCanvas) => {
+    document.body.appendChild(resultCanvas);
+  });
+};</code></pre>
+  It's that easy! Come check out the <a href="https://github.com/ColonelParrot/jscanify/wiki" target="_blank">documentation</a>!
+  </div>
+  <script src="../src/jscanify.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"
+    integrity="sha512-bgHRAiTjGrzHzLyKOnpFvaEpGzJet3z4tZnXGjpsCcqOnAH6VGUx9frc5bcIhKTVLEiCO6vEhNAgx5jtLUYrfA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>hljs.highlightAll();</script>
+</body>
+
+</html>

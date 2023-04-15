@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900");
+
+html,
+body {
+  margin: 0;
+  font-family: "Lato";
+}
+
+#hero {
+  width: 100%;
+  overflow: hidden;
+  background-image: url("images/galaxy.png");
+  background-size: cover;
+  background-position: 0 -170px;
+  text-align: center;
+  color: white;
+  padding: 50px 0;
+}
+
+#hero h2 {
+  font-weight: 300;
+  margin: 0 20px;
+  margin-top: 15px;
+}
+
+#hero img {
+  height: 100px;
+  max-width: 80%;
+  height: auto;
+}
+
+.view-on .view-on-option {
+  padding: 11px 16px;
+  border-radius: 8px;
+  background: white;
+  color: black;
+  text-decoration: none;
+  font-family: "Lato";
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.view-on .view-on-option svg {
+  margin-right: 8px;
+}
+
+#content {
+  max-width: 700px;
+  margin: auto;
+  margin-top: 30px;
+  padding: 0 30px;
+  padding-bottom: 30px;
+}
+
+#demo #demo-images .image-container {
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+#demo #demo-images .image-container.selected {
+  box-shadow: 0 0 0 6px #1e85ff;
+}
+
+#demo #demo-images .image-container img {
+  width: 150px;
+  height: 150px;
+}
+
+#demo {
+  display: flex;
+}
+
+#arrow {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+}
+
+#arrow::before {
+  content: "\2192";
+  font-size: 35px;
+}
+
+#demo-result {
+  flex: 1;
+  border: 3px solid #ededed;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  padding: 20px;
+  box-sizing: border-box;
+
+  height: 320px;
+  overflow: auto;
+}
+
+#demo-result canvas {
+  max-width: 100%;
+}
+
+code {
+  background-color: #f1f1f1 !important;
+  border-radius: 5px;
+}
+
+/* content: 2193 when screen smol */
+
+@media only screen and (max-width: 600px) {
+  #demo{
+    display: block;
+  }
+
+  #demo-images{
+    display: flex;
+    justify-content: center;
+  }
+
+  #demo #demo-images .image-container, #demo #demo-images .image-container img{
+    height: 100px;
+    width: 100px;
+  }
+
+  #demo #demo-images .image-container:first-of-type{
+    margin-right: 50px;
+  }
+
+  #demo-title{
+    text-align: center;
+  }
+  #arrow{
+    margin-top: 0;
+    justify-content: center;
+  }
+
+  #arrow::before{
+    content: "\2193";
+  }
+}
