@@ -3,6 +3,16 @@
 </p>
 
 <p align="center">
+    <a href="https://github.com/ColonelParrot/jscanify/blob/master/LICENSE"><img src="https://img.shields.io/github/license/ColonelParrot/jscanify.svg"></a>
+    <a href="https://GitHub.com/ColonelParrot/jscanify/releases/"><img src="https://img.shields.io/github/release/ColonelParrot/jscanify.svg"></a>
+    <a href="https://npmjs.com/package/jscanify"><img src="https://badgen.net/npm/v/jscanify"></a>
+</p>
+
+<p align="center">
+  <a href="https://nodei.co/npm/jscanify/"><img src="https://nodei.co/npm/jscanify.png"></a>
+</p>
+
+<p align="center">
 Open-source pure Javascript implemented mobile document scanner. Powered with <a href="https://docs.opencv.org/3.4/d5/d10/tutorial_js_root.html">opencv.js</a><br/><br/>
 Available on <a href="https://www.npmjs.com/package/jscanify">npm</a> or via <a href="https://www.jsdelivr.com/package/gh/ColonelParrot/jscanify">cdn</a>
 </p>
