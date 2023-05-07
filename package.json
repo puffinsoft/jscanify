@@ -2,12 +2,12 @@
   "name": "jscanify",
   "version": "1.0.0",
   "description": "Open-source Javascript mobile document scanner.",
-  "main": "src/jscanify.js",
+  "main": "src/jscanify-node.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,10 @@
   "bugs": {
     "url": "https://github.com/ColonelParrot/jscanify/issues"
   },
-  "homepage": "https://colonelparrot.github.io/jscanify/"
+  "homepage": "https://colonelparrot.github.io/jscanify/",
+  "dependencies": {
+    "canvas": "^2.11.2",
+    "jsdom": "^22.0.0",
+    "mocha": "^10.2.0"
+  }
 }
