@@ -1,4 +1,4 @@
-/*! jscanify v1.0.0 | (c) ColonelParrot and other contributors | MIT License */
+/*! jscanify v1.1.0 | (c) ColonelParrot and other contributors | MIT License */
 
 (function (global, factory) {
   typeof exports === "object" && typeof module !== "undefined"
@@ -24,7 +24,7 @@
 
     /**
      * Finds the contour of the paper within the image
-     * @param {*} img image to process
+     * @param {*} img image to process (cv.Mat)
      * @returns the biggest contour inside the image
      */
     findPaperContour(img) {
@@ -267,8 +267,5 @@
 
   }
 
-  if (typeof module !== "undefined") {
-    module.exports = { jscanify };
-  }
   return jscanify;
 });
