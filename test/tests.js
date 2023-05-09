@@ -1,8 +1,12 @@
+/*
+  run tests with: npm test
+*/
+
 console.log("RUNNING JSCANIFY TESTS");
 console.log("Warning: This may take a bit");
 
-const { Canvas, createCanvas, Image, ImageData, loadImage } = require("canvas");
-const { writeFileSync, unlinkSync, existsSync } = require("fs");
+const { loadImage } = require("canvas");
+const { mkdirSync, writeFileSync, unlinkSync, existsSync } = require("fs");
 const assert = require("assert");
 
 const jscanify = require("../src/jscanify-node");
@@ -12,6 +16,8 @@ const outputPaths = {
   highlight: __dirname + "/output/highlighted.jpg",
   extracted: __dirname + "/output/extracted.jpg",
 };
+
+const baseFolder = __dirname.replaceAll("\\", "/") + "/output/";
 
 const TEST_IMAGE_PATH = path.join(
   __dirname,
@@ -30,6 +36,10 @@ function setup() {
       unlinkSync(path);
     }
   });
+
+  if (!existsSync(baseFolder)) {
+    mkdirSync(baseFolder);
+  }
 }
 
 function test() {
@@ -39,6 +49,7 @@ function test() {
   console.log("loading OpenCV.js...");
   scanner.loadOpenCV(function (cv) {
     console.log("Finished loading OpenCV.js");
+    console.log("Writing test images to: " + baseFolder);
     describe("feature tests", function (done) {
       it("should highlight paper", function (done) {
         const highlighted = scanner.highlightPaper(testImage);
@@ -48,7 +59,7 @@ function test() {
         );
 
         assert.ok(existsSync(outputPaths.highlight));
-        done()
+        done();
       });
 
       it("should extract paper", function (done) {
