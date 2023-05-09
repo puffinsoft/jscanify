@@ -4,8 +4,8 @@
   typeof exports === "object" && typeof module !== "undefined"
     ? (module.exports = factory())
     : typeof define === "function" && define.amd
-      ? define(factory)
-      : (global.jscanify = factory());
+    ? define(factory)
+    : (global.jscanify = factory());
 })(this, function () {
   "use strict";
 
@@ -20,7 +20,7 @@
   }
 
   class jscanify {
-    constructor() { }
+    constructor() {}
 
     /**
      * Finds the contour of the paper within the image
@@ -184,34 +184,23 @@
       );
 
       cv.imshow(canvas, warpedDst);
+      const canvasContext = canvas.getContext("2d");
+      canvasContext.save()
+      canvasContext.scale(1, -1)
+      canvasContext.drawImage(canvas, 0, -resultHeight)
+      canvasContext.restore()
 
-      const newImg = document.createElement("img");
-      newImg.src = canvas.toDataURL();
-      newImg.onload = function () {
-        // flip unwarped image
-
-        let ctx = canvas.getContext("2d");
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        canvas.width = resultWidth;
-        canvas.height = resultHeight;
-        ctx.setTransform(1, 0, 0, -1, 0, canvas.height);
-
-        ctx.drawImage(newImg, 0, 0);
-
-        ctx.setTransform(1, 0, 0, 1, 0, 0);
-
-        img.delete();
-        warpedDst.delete();
-        onComplete(canvas);
-      };
+      img.delete()
+      warpedDst.delete()
+      onComplete(canvas)
     }
-    
+
     /**
      * Calculates the corner points of a contour.
      * @param {*} contour contour from {@link findPaperContour}
      * @returns object with properties `topLeftCorner`, `topRightCorner`, `bottomLeftCorner`, `bottomRightCorner`, each with `x` and `y` property
      */
-     getCornerPoints(contour) {
+    getCornerPoints(contour) {
       let rect = cv.minAreaRect(contour);
       const center = rect.center;
 
@@ -264,7 +253,6 @@
         bottomRightCorner,
       };
     }
-
   }
 
   return jscanify;
