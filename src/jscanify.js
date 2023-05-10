@@ -1,4 +1,4 @@
-/*! jscanify v1.1.0 | (c) ColonelParrot and other contributors | MIT License */
+/*! jscanify v1.2.0 | (c) ColonelParrot and other contributors | MIT License */
 
 (function (global, factory) {
   typeof exports === "object" && typeof module !== "undefined"
@@ -134,7 +134,7 @@
      * @param {*} onComplete callback with `HTMLCanvasElement` passed - the unwarped paper
      * @param {*} cornerPoints optional custom corner points, in case automatic corner points are incorrect
      */
-    extractPaper(image, resultWidth, resultHeight, onComplete, cornerPoints) {
+    extractPaper(image, resultWidth, resultHeight, cornerPoints) {
       const canvas = document.createElement("canvas");
 
       const img = cv.imread(image);
@@ -187,7 +187,7 @@
 
       img.delete()
       warpedDst.delete()
-      onComplete(canvas)
+      return canvas;
     }
 
     /**
