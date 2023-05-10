@@ -32,12 +32,11 @@ $('#demo-images .image-container').click(function () {
         newImg.src = imageSrc
 
         newImg.onload = function(){
-            scanner.extractPaper(newImg, 386, 500, (resultCanvas) => {
-                $('#demo-result').append(resultCanvas);
+            const resultCanvas = scanner.extractPaper(newImg, 386, 500);
+            $('#demo-result').append(resultCanvas);
                 
-                const highlightedCanvas = scanner.highlightPaper(newImg)
-                $('#demo-result').append(highlightedCanvas);
-            });
+            const highlightedCanvas = scanner.highlightPaper(newImg)
+            $('#demo-result').append(highlightedCanvas);
         }
     })
 })
