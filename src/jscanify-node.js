@@ -140,8 +140,8 @@ class jscanify {
    * @param {*} image image to process
    * @param {*} resultWidth desired result paper width
    * @param {*} resultHeight desired result paper height
-   * @param {*} onComplete callback with `HTMLCanvasElement` passed - the unwarped paper
    * @param {*} cornerPoints optional custom corner points, in case automatic corner points are incorrect
+   * @returns `HTMLCanvasElement` containing undistorted image
    */
   extractPaper(image, resultWidth, resultHeight, cornerPoints) {
     const canvas = createCanvas();
