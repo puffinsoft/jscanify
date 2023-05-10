@@ -3,6 +3,10 @@
 </p>
 
 <p align="center">
+    <a href="https://www.jsdelivr.com/package/gh/ColonelParrot/jscanify"><img src="https://data.jsdelivr.com/v1/package/gh/ColonelParrot/jscanify/badge"></a>
+    <a href="https://cdnjs.com/libraries/jscanify"><img src="https://img.shields.io/cdnjs/v/jscanify"></a>
+    <a href="https://npmjs.com/package/jscanify"><img src="https://badgen.net/npm/dw/jscanify"></a>
+    <br />
     <a href="https://github.com/ColonelParrot/jscanify/blob/master/LICENSE"><img src="https://img.shields.io/github/license/ColonelParrot/jscanify.svg"></a>
     <a href="https://GitHub.com/ColonelParrot/jscanify/releases/"><img src="https://img.shields.io/github/release/ColonelParrot/jscanify.svg"></a>
     <a href="https://npmjs.com/package/jscanify"><img src="https://badgen.net/npm/v/jscanify"></a>
@@ -22,8 +26,8 @@ Available on <a href="https://www.npmjs.com/package/jscanify">npm</a> or via <a 
 - paper detection & highlighting
 - paper scanning with distortion correction
 
-| Image Highlighting                                | Scanned Result                                  |
-| ------------------------------------------------- | ----------------------------------------------- |
+| Image Highlighting                           | Scanned Result                             |
+| -------------------------------------------- | ------------------------------------------ |
 | <img src="docs/images/highlight-paper1.png"> | <img src="docs/images/scanned-paper1.png"> |
 | <img src="docs/images/highlight-paper2.png"> | <img src="docs/images/scanned-paper2.png"> |
 
@@ -80,9 +84,10 @@ image.onload = function () {
 The following code continuously reads from the user's camera and highlights the paper:
 
 ```html
-<video id="video"></video>
-<canvas id="canvas"></canvas>  <!-- original video -->
-<canvas id="result"></canvas>  <!-- highlighted video -->
+<video id="video"></video> <canvas id="canvas"></canvas>
+<!-- original video -->
+<canvas id="result"></canvas>
+<!-- highlighted video -->
 ```
 
 ```js
@@ -104,6 +109,8 @@ navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
 ```
 
 To export the paper to a PDF, see [here](https://stackoverflow.com/questions/23681325/convert-canvas-to-pdf)
+
 ### Notes
+
 - for optimal paper detection, the paper should be placed on a flat surface with a solid background color
 - we recommend wrapping your code using `jscanify` in a window `load` event listener to ensure OpenCV is loaded
