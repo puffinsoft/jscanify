@@ -64,15 +64,14 @@ function test() {
       });
 
       it("should extract paper", function (done) {
-        scanner.extractPaper(testImage, 386, 500, function (extracted) {
-          writeFileSync(
-            outputPaths.extracted,
-            extracted.toBuffer("image/jpeg")
-          );
+        const extracted = scanner.extractPaper(testImage, 386, 500);
+        writeFileSync(
+          outputPaths.extracted,
+          extracted.toBuffer("image/jpeg")
+        );
 
-          assert.ok(existsSync(outputPaths.extracted));
-          done();
-        });
+        assert.ok(existsSync(outputPaths.extracted));
+        done();
       });
 
       it("should label corner points", function (done) {
