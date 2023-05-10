@@ -187,11 +187,6 @@ class jscanify {
     );
 
     cv.imshow(canvas, warpedDst);
-    const canvasContext = canvas.getContext("2d");
-    canvasContext.save();
-    canvasContext.scale(1, -1);
-    canvasContext.drawImage(canvas, 0, -resultHeight);
-    canvasContext.restore();
 
     img.delete();
     warpedDst.delete();
@@ -222,25 +217,25 @@ class jscanify {
     for (let i = 0; i < contour.data32S.length; i += 2) {
       const point = { x: contour.data32S[i], y: contour.data32S[i + 1] };
       const dist = distance(point, center);
-      if (point.x < center.x && point.y > center.y) {
+      if (point.x < center.x && point.y < center.y) {
         // top left
         if (dist > topLeftCornerDist) {
           topLeftCorner = point;
           topLeftCornerDist = dist;
         }
-      } else if (point.x > center.x && point.y > center.y) {
+      } else if (point.x > center.x && point.y < center.y) {
         // top right
         if (dist > topRightCornerDist) {
           topRightCorner = point;
           topRightCornerDist = dist;
         }
-      } else if (point.x < center.x && point.y < center.y) {
+      } else if (point.x < center.x && point.y > center.y) {
         // bottom left
         if (dist > bottomLeftCornerDist) {
           bottomLeftCorner = point;
           bottomLeftCornerDist = dist;
         }
-      } else if (point.x > center.x && point.y < center.y) {
+      } else if (point.x > center.x && point.y > center.y) {
         // bottom right
         if (dist > bottomRightCornerDist) {
           bottomRightCorner = point;
