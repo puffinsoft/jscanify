@@ -73,9 +73,8 @@ const scanner = new jscanify();
 const paperWidth = 500;
 const paperHeight = 1000;
 image.onload = function () {
-  scanner.extractPaper(image, paperWidth, paperHeight, (resultCanvas) => {
-    document.body.appendChild(resultCanvas);
-  });
+  const resultCanvas = scanner.extractPaper(image, paperWidth, paperHeight);
+  document.body.appendChild(resultCanvas);
 };
 ```
 
