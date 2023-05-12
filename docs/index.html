@@ -96,9 +96,8 @@ import jscanify from 'jscanify'</code></pre>
 const paperWidth = 500;
 const paperHeight = 1000;
 image.onload = function () {
-  scanner.extractPaper(image, paperWidth, paperHeight, (resultCanvas) => {
-    document.body.appendChild(resultCanvas);
-  });
+  const resultCanvas = scanner.extractPaper(image, paperWidth, paperHeight);
+  document.body.appendChild(resultCanvas);
 };</code></pre>
     It's that easy! Come check out the <a href="https://github.com/ColonelParrot/jscanify/wiki"
       target="_blank">documentation</a>!
