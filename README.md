@@ -85,28 +85,38 @@ image.onload = function () {
 The following code continuously reads from the user's camera and highlights the paper:
 
 ```html
-<video id="video"></video> <canvas id="canvas"></canvas>
-<!-- original video -->
-<canvas id="result"></canvas>
+<canvas id="canvas"></canvas>
 <!-- highlighted video -->
 ```
 
 ```js
 const scanner = new jscanify();
+const canvas = document.getElementById("canvas");
 const canvasCtx = canvas.getContext("2d");
-const resultCtx = result.getContext("2d");
-navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
-  video.srcObject = stream;
-  video.onloadedmetadata = () => {
-    video.play();
 
-    setInterval(() => {
-      canvasCtx.drawImage(video, 0, 0);
-      const resultCanvas = scanner.highlightPaper(canvas);
-      resultCtx.drawImage(resultCanvas, 0, 0);
-    }, 10);
-  };
+navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
+
+    const video = document.createElement('video');
+    video.srcObject = stream;
+    video.onloadedmetadata = () => {
+
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        video.play();
+
+        setInterval(() => {
+            // Draw the video frame on the canvas
+            canvasCtx.drawImage(video, 0, 0);
+
+            // Highlight the paper and draw it on the same canvas
+            const resultCanvas = scanner.highlightPaper(canvas);
+            canvasCtx.clearRect(0, 0, canvas.width, canvas.height);  // Clear the canvas
+            canvasCtx.drawImage(resultCanvas, 0, 0);  // Draw the highlighted paper
+        }, 10);
+    };
 });
+
 ```
 
 To export the paper to a PDF, see [here](https://stackoverflow.com/questions/23681325/convert-canvas-to-pdf)
