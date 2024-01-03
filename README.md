@@ -35,6 +35,8 @@ Available on <a href="https://www.npmjs.com/package/jscanify">npm</a> or via <a 
 
 ## Quickstart
 
+> **Developers Note**: you can now use the [jscanify debugging tool](https://colonelparrot.github.io/jscanify/tester.html) to observe the result (highlighting, extraction) on test images.
+
 ### Import
 
 npm:
