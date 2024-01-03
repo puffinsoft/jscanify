@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-32CWY3SB1G"
+    ></script>
+    <script>
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      (window.dataLayer = window.dataLayer || []),
+        gtag("js", new Date()),
+        gtag("config", "G-32CWY3SB1G");
+    </script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jscanify debugger tool</title>
+    <meta
+      name="description"
+      content="A debugging tool for developers to test jscanify."
+    />
+    <meta property="og:title" content="jscanify debugger tool" />
+    <meta
+      property="og:description"
+      content="A debugging tool for developers to test jscanify."
+    />
+    <meta
+      property="og:url"
+      content="https://colonelparrot.github.io/jscanify/tester.html"
+    />
+    <meta
+      property="og:image"
+      content="https://colonelparrot.github.io/jscanify/images/logo.png"
+    />
+    <meta property="og:locale" content="en_US" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+      * {
+        font-family: system-ui;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: 400;
+      }
+
+      img,
+      canvas {
+        max-height: 400px;
+        max-width: 400px;
+      }
+
+      #results > div {
+        margin: 20px;
+        margin-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="padding: 30px">
+      <h1 style="margin: 0">jscanify debugging tool</h1>
+      <h2 style="margin-top: 10px">
+        A tool for developers to test jscanify on test images
+      </h2>
+
+      <h3 style="margin-bottom: 10px">Upload your image:</h3>
+      <input
+        type="file"
+        id="fileInput"
+        accept="image/png, image/gif, image/jpeg"
+      />
+
+      <div id="result" style="margin-top: 50px; display: none">
+        <h2 style="margin-bottom: 0; margin-left: 20px">Result</h2>
+        <div style="display: flex; flex-wrap: wrap" id="results">
+          <div>
+            <h3>Original image</h3>
+            <img id="orig" />
+          </div>
+          <div id="highlighted">
+            <h3>Highlighted Paper</h3>
+          </div>
+          <div id="extracted">
+            <h3>Extracted Paper</h3>
+          </div>
+          <div id="cornerPts">
+            <h3>Corner Points</h3>
+            <pre style="font-family: monospace"></pre>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 50px">
+      Check out the code for this page
+      <a
+        href="https://github.com/ColonelParrot/jscanify/blob/master/docs/tester.html"
+        target="_blank"
+        >here.</a
+      >
+    </div>
+    </div>
+
+    <script src="https://docs.opencv.org/4.7.0/opencv.js" async></script>
+    <!-- warning: loading OpenCV can take some time. Load asynchronously -->
+    <script src="https://cdn.jsdelivr.net/gh/ColonelParrot/jscanify@master/src/jscanify.min.js"></script>
+    <script>
+      window.addEventListener("load", function () {
+        const scanner = new jscanify();
+        fileInput.addEventListener("change", function (e) {
+          if (e.target.files.length) {
+            const image = e.target.files[0];
+            orig.src = URL.createObjectURL(image);
+            clearData();
+            result.style.display = "block";
+
+            orig.onload = function () {
+              const highlightedCanvas = scanner.highlightPaper(orig);
+              highlighted.appendChild(highlightedCanvas);
+
+              const extractedCanvas = scanner.extractPaper(orig, 772, 1000);
+              extracted.appendChild(extractedCanvas);
+
+              const contour = scanner.findPaperContour(cv.imread(orig));
+              const cornerPoints = scanner.getCornerPoints(contour);
+              cornerPts.querySelector("pre").textContent = JSON.stringify(
+                cornerPoints,
+                null,
+                4
+              );
+            };
+          }
+        });
+      });
+
+      function clearData() {
+        highlighted.querySelector("canvas")?.remove();
+        extracted.querySelector("canvas")?.remove();
+        cornerPts.querySelector("pre").textContent = "";
+      }
+    </script>
+  </body>
+</html>
