@@ -8,7 +8,6 @@
     <a href="https://npmjs.com/package/jscanify"><img src="https://badgen.net/npm/dw/jscanify"></a>
     <br />
     <a href="https://github.com/ColonelParrot/jscanify/blob/master/LICENSE"><img src="https://img.shields.io/github/license/ColonelParrot/jscanify.svg"></a>
-    <a href="https://GitHub.com/ColonelParrot/jscanify/releases/"><img src="https://img.shields.io/github/release/ColonelParrot/jscanify.svg"></a>
     <a href="https://npmjs.com/package/jscanify"><img src="https://badgen.net/npm/v/jscanify"></a>
 </p>
 
