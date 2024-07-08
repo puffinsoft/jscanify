@@ -50,7 +50,7 @@ cdn:
 ```html
 <script src="https://docs.opencv.org/4.7.0/opencv.js" async></script>
 <!-- warning: loading OpenCV can take some time. Load asynchronously -->
-<script src="https://cdn.jsdelivr.net/gh/ColonelParrot/jscanify@master/src/jscanify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/puffinsoft/jscanify@master/src/jscanify.min.js"></script>
 ```
 
 > **Note**: jscanify on NodeJS is slightly different. See [wiki: use on NodeJS](https://github.com/ColonelParrot/jscanify/wiki#use-on-nodejs).
