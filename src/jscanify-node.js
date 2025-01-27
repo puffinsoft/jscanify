@@ -44,7 +44,7 @@ class jscanify {
    */
   findPaperContour(img) {
     const imgGray = new cv.Mat();
-    cv.cvtColor(img, imgGray, cv.COLOR_RGBA2GRAY);
+    cv.Canny(img, imgGray, 50, 200);
 
     const imgBlur = new cv.Mat();
     cv.GaussianBlur(
@@ -69,6 +69,7 @@ class jscanify {
       cv.RETR_CCOMP,
       cv.CHAIN_APPROX_SIMPLE
     );
+    
     let maxArea = 0;
     let maxContourIndex = -1;
     for (let i = 0; i < contours.size(); ++i) {

@@ -4,8 +4,8 @@
   typeof exports === "object" && typeof module !== "undefined"
     ? (module.exports = factory())
     : typeof define === "function" && define.amd
-    ? define(factory)
-    : (global.jscanify = factory());
+      ? define(factory)
+      : (global.jscanify = factory());
 })(this, function () {
   "use strict";
 
@@ -20,7 +20,7 @@
   }
 
   class jscanify {
-    constructor() {}
+    constructor() { }
 
     /**
      * Finds the contour of the paper within the image
@@ -29,7 +29,7 @@
      */
     findPaperContour(img) {
       const imgGray = new cv.Mat();
-      cv.cvtColor(img, imgGray, cv.COLOR_RGBA2GRAY);
+      cv.Canny(img, imgGray, 50, 200);
 
       const imgBlur = new cv.Mat();
       cv.GaussianBlur(
@@ -47,7 +47,7 @@
         imgThresh,
         0,
         255,
-        cv.THRESH_BINARY + cv.THRESH_OTSU
+        cv.THRESH_OTSU
       );
 
       let contours = new cv.MatVector();
@@ -60,6 +60,7 @@
         cv.RETR_CCOMP,
         cv.CHAIN_APPROX_SIMPLE
       );
+
       let maxArea = 0;
       let maxContourIndex = -1;
       for (let i = 0; i < contours.size(); ++i) {
