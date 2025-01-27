@@ -26,9 +26,12 @@ Available on <a href="https://www.npmjs.com/package/jscanify">npm</a> or via <a 
 
 - paper detection & highlighting
 - paper scanning with distortion correction
-<br/>
 
-<img src="docs/images/github-explanation.png" />
+<hr />
+
+<img src="docs/images/github-explanation-long.png" />
+
+<hr/>
 
 ## Quickstart
 
