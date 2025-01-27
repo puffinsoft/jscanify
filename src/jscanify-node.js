@@ -50,7 +50,7 @@ class jscanify {
     cv.GaussianBlur(
       imgGray,
       imgBlur,
-      new cv.Size(5, 5),
+      new cv.Size(3, 3),
       0,
       0,
       cv.BORDER_DEFAULT
