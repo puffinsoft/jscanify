@@ -6,71 +6,75 @@ console.log("RUNNING JSCANIFY TESTS");
 console.log("Warning: This may take a bit");
 
 const { loadImage, createCanvas } = require("canvas");
-const { mkdirSync, writeFileSync, unlinkSync, existsSync } = require("fs");
+const { mkdirSync, writeFileSync, unlinkSync, existsSync, readdirSync } = require("fs");
 const assert = require("assert");
 
 const jscanify = require("../src/jscanify-node");
 const path = require("path");
 
-const outputPaths = {
-  highlight: __dirname + "/output/highlighted.jpg",
-  extracted: __dirname + "/output/extracted.jpg",
-  cornerPoints: __dirname + "/output/corner_points.jpg",
-};
 
-const baseFolder = __dirname.replaceAll("\\", "/") + "/output/";
+const OUTPUT_FOLDER = __dirname.replaceAll("\\", "/") + "/output/";
 
-const TEST_IMAGE_PATH = path.join(
+const TEST_IMAGE_DIRECTORY = path.join(
   __dirname,
   "..",
   "docs",
   "images",
-  "test",
-  "test.png"
+  "test"
 );
 
+/**
+ * delete previously generated output images
+ */
 function setup() {
   console.log("=== setting up tests ===");
   console.log("Deleting previously generated images");
-  Object.values(outputPaths).forEach((path) => {
-    if (existsSync(path)) {
-      unlinkSync(path);
-    }
-  });
 
-  if (!existsSync(baseFolder)) {
-    mkdirSync(baseFolder);
+  if (!existsSync(OUTPUT_FOLDER)) {
+    mkdirSync(OUTPUT_FOLDER);
   }
+
+  readdirSync(OUTPUT_FOLDER).forEach((file) => {
+    unlinkSync(path.join(OUTPUT_FOLDER, file));
+  })
 }
 
-function test() {
-  const scanner = new jscanify();
+console.log("=== beginning  tests ===");
+console.log("loading OpenCV.js...");
 
-  console.log("=== beginning  tests ===");
-  console.log("loading OpenCV.js...");
-  scanner.loadOpenCV(function (cv) {
-    console.log("Finished loading OpenCV.js");
-    console.log("Writing test images to: " + baseFolder);
-    describe("feature tests", function () {
+const scanner = new jscanify();
+scanner.loadOpenCV(function (cv) {
+
+  console.log("Finished loading OpenCV.js");
+  console.log("Writing test images to: " + OUTPUT_FOLDER);
+
+  /**
+   * tests an individual image
+   */
+  function test(testImage, imageCount) {
+    describe("image #" + imageCount, function () {
       it("should highlight paper", function (done) {
         const highlighted = scanner.highlightPaper(testImage);
+        const higlightedOutputPath = OUTPUT_FOLDER + "highlighted-" + imageCount + ".jpg";
         writeFileSync(
-          outputPaths.highlight,
+          higlightedOutputPath,
           highlighted.toBuffer("image/jpeg")
         );
 
-        assert.ok(existsSync(outputPaths.highlight));
+        assert.ok(existsSync(higlightedOutputPath));
         done();
       });
 
       it("should extract paper", function (done) {
         const extracted = scanner.extractPaper(testImage, 386, 500);
+        const extractedOutputPath = OUTPUT_FOLDER + "extracted-" + imageCount + ".jpg";
+        
         writeFileSync(
-          outputPaths.extracted,
+          extractedOutputPath,
           extracted.toBuffer("image/jpeg")
         );
 
-        assert.ok(existsSync(outputPaths.extracted));
+        assert.ok(existsSync(extractedOutputPath));
         done();
       });
 
@@ -103,18 +107,31 @@ function test() {
           ctx.fill();
         });
 
-        writeFileSync(outputPaths.cornerPoints, canvas.toBuffer("image/jpeg"));
+        const cornerPointsOutputPath = OUTPUT_FOLDER + "corner_points-" + imageCount + ".jpg";
+        writeFileSync(cornerPointsOutputPath, canvas.toBuffer("image/jpeg"));
 
-        assert.ok(existsSync(outputPaths.cornerPoints));
+        assert.ok(existsSync(cornerPointsOutputPath));
         done();
       });
     });
-  });
-}
+  }
 
-let testImage;
-loadImage(TEST_IMAGE_PATH).then(function (image) {
-  testImage = image;
   setup();
-  test();
+
+  let imageCount = 1;
+
+  /*
+   * go through all images in test image directory
+   */
+  readdirSync(TEST_IMAGE_DIRECTORY).forEach((file) => {
+    const TEST_IMAGE_PATH = path.join(TEST_IMAGE_DIRECTORY, file);
+    
+    if(!file.endsWith("-sized.png")){ // these images are for the website, not testing
+      let tempCount = imageCount++;
+  
+      loadImage(TEST_IMAGE_PATH).then(function (image) {
+        test(image, tempCount);
+      });
+    }
+  })
 });

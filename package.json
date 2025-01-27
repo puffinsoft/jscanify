@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --trace-uncaught"
   },
   "repository": {
     "type": "git",
