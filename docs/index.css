@@ -9,7 +9,7 @@ body {
 #hero {
   width: 100%;
   overflow: hidden;
-  background-image: url("images/galaxy.png");
+  background-image: url("images/galaxy.webp");
   background-size: cover;
   background-position: 0 -170px;
   background-attachment: fixed;
