@@ -1,4 +1,4 @@
-/*! jscanify v1.3.0 | (c) ColonelParrot and other contributors | MIT License */
+/*! jscanify v1.3.1 | (c) ColonelParrot and other contributors | MIT License */
 
 const { Canvas, createCanvas, Image, ImageData } = require("canvas");
 const { JSDOM } = require("jsdom");
