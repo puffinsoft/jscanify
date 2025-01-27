@@ -26,6 +26,9 @@ Available on <a href="https://www.npmjs.com/package/jscanify">npm</a> or via <a 
 
 - paper detection & highlighting
 - paper scanning with distortion correction
+<br/>
+- 🆕 glare suppression
+- 🆕 multi-colored paper support
 
 <hr />
 
