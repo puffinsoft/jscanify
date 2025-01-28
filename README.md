@@ -22,11 +22,15 @@ Supports the web, NodeJS, <a href="https://github.com/ColonelParrot/react-scanif
 Available on <a href="https://www.npmjs.com/package/jscanify">npm</a> or via <a href="https://www.jsdelivr.com/package/gh/ColonelParrot/jscanify">cdn</a><br/>
 </p>
 
+
 **Features**:
 
 - paper detection & highlighting
 - paper scanning with distortion correction
-<br/>
+
+> [!IMPORTANT]  
+> 🎉 _jscanify v1.3.0_ has just been released! **Same API, better results.** See the [release](https://github.com/puffinsoft/jscanify/releases/tag/v1.3.0) to see the difference! 🎉
+
 
 - 🆕 glare suppression
 - 🆕 multi-colored paper support
