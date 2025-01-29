@@ -22,7 +22,6 @@ Supports the web, NodeJS, <a href="https://github.com/ColonelParrot/react-scanif
 Available on <a href="https://www.npmjs.com/package/jscanify">npm</a> or via <a href="https://www.jsdelivr.com/package/gh/ColonelParrot/jscanify">cdn</a><br/>
 </p>
 
-
 **Features**:
 
 - paper detection & highlighting
@@ -38,6 +37,8 @@ Available on <a href="https://www.npmjs.com/package/jscanify">npm</a> or via <a 
 <hr />
 
 <img src="docs/images/github-explanation-long.png" />
+
+<h3 align="center" margin="0"><a href="https://github.com/puffinsoft/jscanify/wiki">➡️ view documentation</a></h3>
 
 <hr/>
 
@@ -125,3 +126,5 @@ To export the paper to a PDF, see [here](https://stackoverflow.com/questions/236
 
 - for optimal paper detection, the paper should be placed on a flat surface with a solid background color
 - we recommend wrapping your code using `jscanify` in a window `load` event listener to ensure OpenCV is loaded
+
+<h3 align="center" margin="0"><a href="https://github.com/puffinsoft/jscanify/wiki">➡️ view documentation</a></h3>
