@@ -71,7 +71,10 @@
         }
       }
 
-      const maxContour = contours.get(maxContourIndex);
+      const maxContour =
+        maxContourIndex >= 0 ?
+          contours.get(maxContourIndex) :
+          null;
 
       imgGray.delete();
       imgBlur.delete();
