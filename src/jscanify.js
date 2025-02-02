@@ -132,7 +132,10 @@
 
     /**
      * Extracts and undistorts the image detected within the frame.
-     * @param {*} image image to process
+     * 
+     * Returns `null` if no paper is detected.
+     *  
+    * @param {*} image image to process
      * @param {*} resultWidth desired result paper width
      * @param {*} resultHeight desired result paper height
      * @param {*} cornerPoints optional custom corner points, in case automatic corner points are incorrect
@@ -140,10 +143,12 @@
      */
     extractPaper(image, resultWidth, resultHeight, cornerPoints) {
       const canvas = document.createElement("canvas");
-
       const img = cv.imread(image);
-
       const maxContour = this.findPaperContour(img);
+
+      if(maxContour == null){
+        return null;
+      }
 
       const {
         topLeftCorner,

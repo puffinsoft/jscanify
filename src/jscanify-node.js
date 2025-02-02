@@ -141,6 +141,9 @@ class jscanify {
 
   /**
    * Extracts and undistorts the image detected within the frame.
+   * 
+   * Returns `null` if no paper is detected.
+   * 
    * @param {*} image image to process
    * @param {*} resultWidth desired result paper width
    * @param {*} resultHeight desired result paper height
@@ -151,6 +154,11 @@ class jscanify {
     const canvas = createCanvas();
     const img = cv.imread(image);
     const maxContour = this.findPaperContour(img);
+
+    if(maxContour == null){
+      return null;
+    }
+
     const {
       topLeftCorner,
       topRightCorner,
