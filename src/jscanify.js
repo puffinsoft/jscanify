@@ -1,4 +1,4 @@
-/*! jscanify v1.3.2 | (c) ColonelParrot and other contributors | MIT License */
+/*! jscanify v1.3.3 | (c) ColonelParrot and other contributors | MIT License */
 
 (function (global, factory) {
   typeof exports === "object" && typeof module !== "undefined"
