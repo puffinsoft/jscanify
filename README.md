@@ -5,6 +5,7 @@
 <p align="center">
     <a href="https://www.jsdelivr.com/package/gh/ColonelParrot/jscanify"><img src="https://data.jsdelivr.com/v1/package/gh/ColonelParrot/jscanify/badge"></a>
     <a href="https://cdnjs.com/libraries/jscanify"><img src="https://img.shields.io/cdnjs/v/jscanify"></a>
+    <a href="https://npmjs.com/package/jscanify"><img src="https://badgen.net/npm/dw/jscanify"></a>
     <br />
     <a href="https://github.com/puffinsoft/jscanify/blob/master/LICENSE"><img src="https://img.shields.io/github/license/puffinsoft/jscanify.svg"></a>
     <a href="https://npmjs.com/package/jscanify"><img src="https://badgen.net/npm/v/jscanify"></a>
