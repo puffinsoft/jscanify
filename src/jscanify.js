@@ -144,9 +144,9 @@
     extractPaper(image, resultWidth, resultHeight, cornerPoints) {
       const canvas = document.createElement("canvas");
       const img = cv.imread(image);
-      const maxContour = this.findPaperContour(img);
+      const maxContour = cornerPoints ? null : this.findPaperContour(img);
 
-      if(maxContour == null){
+      if(maxContour == null && cornerPoints === undefined){
         return null;
       }
 
