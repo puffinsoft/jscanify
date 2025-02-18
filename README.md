@@ -28,7 +28,7 @@ Available on <a href="https://www.npmjs.com/package/jscanify">npm</a> or via <a 
 - paper scanning with distortion correction
 
 > [!IMPORTANT]  
-> 🎉 _jscanify v1.3.0_ has just been released! **Same API, better results.** See the [release](https://github.com/puffinsoft/jscanify/releases/tag/v1.3.0) to see the difference! 🎉
+> 🎉 _jscanify v1.3.0+_ has just been released! **Same API, better results.** See the [release](https://github.com/puffinsoft/jscanify/releases/tag/v1.3.0) to see the difference! 🎉
 
 
 - 🆕 glare suppression
