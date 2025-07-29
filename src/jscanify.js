@@ -4,8 +4,8 @@
   typeof exports === "object" && typeof module !== "undefined"
     ? (module.exports = factory())
     : typeof define === "function" && define.amd
-      ? define(factory)
-      : (global.jscanify = factory());
+    ? define(factory)
+    : (global.jscanify = factory());
 })(this, function () {
   "use strict";
 
@@ -20,7 +20,7 @@
   }
 
   class jscanify {
-    constructor() { }
+    constructor() {}
 
     /**
      * Finds the contour of the paper within the image
@@ -42,13 +42,7 @@
       );
 
       const imgThresh = new cv.Mat();
-      cv.threshold(
-        imgBlur,
-        imgThresh,
-        0,
-        255,
-        cv.THRESH_OTSU
-      );
+      cv.threshold(imgBlur, imgThresh, 0, 255, cv.THRESH_OTSU);
 
       let contours = new cv.MatVector();
       let hierarchy = new cv.Mat();
@@ -72,9 +66,7 @@
       }
 
       const maxContour =
-        maxContourIndex >= 0 ?
-          contours.get(maxContourIndex) :
-          null;
+        maxContourIndex >= 0 ? contours.get(maxContourIndex) : null;
 
       imgGray.delete();
       imgBlur.delete();
@@ -91,15 +83,20 @@
      * @returns `HTMLCanvasElement` with original image and paper highlighted
      */
     highlightPaper(image, options) {
+      // Set default options if not provided
       options = options || {};
-      options.color = options.color || "orange";
-      options.thickness = options.thickness || 10;
+      options.color = options.color || "orange"; // Highlight color for the paper outline
+      options.thickness = options.thickness || 10; // Thickness of the highlight
+      options.background = options.background || "rgba(0, 255, 0, 0.2)"; // Default transparent background (green)
+
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
       const img = cv.imread(image);
 
+      // Find the paper contour using the `findPaperContour` method
       const maxContour = this.findPaperContour(img);
-      cv.imshow(canvas, img);
+      cv.imshow(canvas, img); // Display the image on the canvas for visual reference
+
       if (maxContour) {
         const {
           topLeftCorner,
@@ -108,12 +105,24 @@
           bottomRightCorner,
         } = this.getCornerPoints(maxContour, img);
 
+        // Check if all the corner points are valid
         if (
           topLeftCorner &&
           topRightCorner &&
           bottomLeftCorner &&
           bottomRightCorner
         ) {
+          // Draw the background color first, filling the detected paper area
+          ctx.fillStyle = options.background;
+          ctx.beginPath();
+          ctx.moveTo(...Object.values(topLeftCorner));
+          ctx.lineTo(...Object.values(topRightCorner));
+          ctx.lineTo(...Object.values(bottomRightCorner));
+          ctx.lineTo(...Object.values(bottomLeftCorner));
+          ctx.closePath();
+          ctx.fill(); // Fill the area with the background color
+
+          // Now draw the outline around the paper
           ctx.strokeStyle = options.color;
           ctx.lineWidth = options.thickness;
           ctx.beginPath();
@@ -126,16 +135,16 @@
         }
       }
 
-      img.delete();
-      return canvas;
+      img.delete(); // Clean up the image matrix
+      return canvas; // Return the canvas with the highlighted paper and background
     }
 
     /**
      * Extracts and undistorts the image detected within the frame.
-     * 
+     *
      * Returns `null` if no paper is detected.
-     *  
-    * @param {*} image image to process
+     *
+     * @param {*} image image to process
      * @param {*} resultWidth desired result paper width
      * @param {*} resultHeight desired result paper height
      * @param {*} cornerPoints optional custom corner points, in case automatic corner points are incorrect
@@ -146,7 +155,7 @@
       const img = cv.imread(image);
       const maxContour = cornerPoints ? null : this.findPaperContour(img);
 
-      if(maxContour == null && cornerPoints === undefined){
+      if (maxContour == null && cornerPoints === undefined) {
         return null;
       }
 
@@ -194,8 +203,8 @@
 
       cv.imshow(canvas, warpedDst);
 
-      img.delete()
-      warpedDst.delete()
+      img.delete();
+      warpedDst.delete();
       return canvas;
     }
 
@@ -221,7 +230,7 @@
       let bottomRightCornerDist = 0;
 
       for (let i = 0; i < contour.data32S.length; i += 2) {
-        const point = { x: contour.data32S[i], y: contour.data32S[i + 1] };
+        const point = {x: contour.data32S[i], y: contour.data32S[i + 1]};
         const dist = distance(point, center);
         if (point.x < center.x && point.y < center.y) {
           // top left

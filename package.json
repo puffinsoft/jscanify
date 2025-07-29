@@ -7,7 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "mocha --trace-uncaught"
+    "test": "mocha --trace-uncaught",
+    "minify": "terser src/jscanify.js --compress --mangle --output dist/jscanify.min.js"
   },
   "repository": {
     "type": "git",
@@ -28,5 +29,8 @@
     "canvas": "^3.1.0",
     "jsdom": "^26.0.0",
     "mocha": "^11.1.0"
+  },
+  "devDependencies": {
+    "terser": "^5.43.1"
   }
 }
