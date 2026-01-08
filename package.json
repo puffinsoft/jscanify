@@ -1,6 +1,6 @@
 {
   "name": "jscanify",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Open-source Javascript mobile document scanner.",
   "main": "src/jscanify-node.js",
   "directories": {
