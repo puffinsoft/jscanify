@@ -4,3 +4,4 @@ docs/images/private
 docs/private
 node_modules
 test/output
+.vscode
