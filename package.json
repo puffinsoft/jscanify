@@ -3,6 +3,14 @@
   "version": "1.4.1",
   "description": "Open-source Javascript mobile document scanner.",
   "main": "src/jscanify-node.js",
+  "exports": {
+    ".": {
+      "default": "./src/jscanify-node.js"
+    },
+    "./client": {
+      "default": "./src/jscanify.js"
+    }
+  },
   "directories": {
     "doc": "docs"
   },
