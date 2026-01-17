@@ -63,7 +63,7 @@ cdn:
 <script src="https://cdn.jsdelivr.net/gh/ColonelParrot/jscanify@master/src/jscanify.min.js"></script>
 ```
 
-> **Note**: jscanify on NodeJS is slightly different. See [wiki: use on NodeJS](https://github.com/ColonelParrot/jscanify/wiki#use-on-nodejs).
+> **Note**: jscanify on NodeJS is slightly different. See [wiki: use on NodeJS](https://github.com/puffinsoft/jscanify/wiki/Getting-started#use-on-nodejs).
 
 ### Highlight Paper in Image
 
